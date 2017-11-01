@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 
 class MyString
 {
@@ -10,22 +9,29 @@ private:
 
 public:
 
-	MyString();	//Don't need to check the other MyString, we use the assumption all the values are valid
-	MyString(MyString *);
+	MyString();
+	MyString(MyString &);
 	MyString(const char *);
 	
 	~MyString();
 
 	size_t GetLength();
-	void Assign(MyString *);
+
+	void Assign(MyString &);
+	void Assign(const char *);
+
 	char CharAt(const unsigned int) const;
-	bool Append(MyString *);
-	int Compare(MyString *) const;
+
+	bool Append(MyString &);
+	bool Append(const char *);
+
+	int Compare(MyString &) const;
+	int Compare(const char *) const;
+
 	bool IsEmpty() const;
 	void Clear();
 
-	//for this version only, for testing only, dangerus function
-	char * GetStringPtr() const { return str_ptr; }
+	char const * c_str() const;
 	
 };
 
