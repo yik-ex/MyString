@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class MyString
 {
@@ -31,7 +32,9 @@ public:
 	bool IsEmpty() const;
 	void Clear();
 
-	char const * c_str() const;
+	const char * c_str() const;
+
+	friend std::ostream& operator<<(std::ostream&, MyString&);
 	
 };
 

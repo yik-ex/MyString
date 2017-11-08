@@ -5,34 +5,33 @@ int main()
 {
 	MyString some_str;
 	std::cout << "Trying to print an empty string" << std::endl;
-	std::cout << some_str.c_str() << std::endl;
+	std::cout << some_str << std::endl;
 
 	MyString some_str_2("This is a test!");
 	std::cout << "Trying to print a Mystrig test created be a c-string string" << std::endl;
-	std::cout << some_str_2.c_str() << std::endl;
+	std::cout << some_str_2 << std::endl;
 
 	MyString some_str_3("This is a test!");
 	std::cout << "Trying to print a Mystrig test created by a copy of a MyString" << std::endl;
-	std::cout << some_str_3.c_str() << std::endl;
+	std::cout << some_str_3 << std::endl;
 
-	const char * test = some_str_3.c_str();
 
 	std::cout << "Testing Assign with MyString" << std::endl;
 	some_str_3.Assign(MyString("This a new MyString"));
-	std::cout << some_str_3.c_str() << std::endl;
+	std::cout << some_str_3 << std::endl;
 
 	std::cout << "Testing Assign with c_string" << std::endl;
 	some_str_3.Assign(MyString("This a new c_string"));
-	std::cout << some_str_3.c_str() << std::endl;
+	std::cout << some_str_3 << std::endl;
 
 
 	std::cout << "Testing Append with MyString" << std::endl;
 	some_str_3.Append(some_str_2);
-	std::cout << some_str_3.c_str() << std::endl;
+	std::cout << some_str_3 << std::endl;
 
 	std::cout << "Testing Append with c_string" << std::endl;
 	some_str_3.Append("Appending a c_string");
-	std::cout << some_str_3.c_str() << std::endl;
+	std::cout << some_str_3 << std::endl;
 
 
 	std::cout << "Testing IsEmpty" << std::endl;
@@ -59,6 +58,8 @@ int main()
 	std::cout << "Testing Clear" << std::endl;
 	some_str_2.Clear();
 	std::cout << some_str_2.IsEmpty() << std::endl;
+
+	system("Pause");
 
 	return 0;
 }

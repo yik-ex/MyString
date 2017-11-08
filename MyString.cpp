@@ -198,3 +198,10 @@ const char * MyString::c_str() const
 {
 	{ return str_ptr; }
 }
+
+//iostrem overloding of MyStream
+std::ostream & operator<<(std::ostream & out, MyString & string)
+{
+	out << string.c_str();
+	return out;
+}
