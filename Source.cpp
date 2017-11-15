@@ -52,6 +52,29 @@ int main()
 	std::cout << some_str.Compare("asdfasdasdkfjhaskldjfhlkasdflkahsdlfkjhaskjdfhlaksjdhflkashdflkajshdfasdf") << std::endl;
 	std::cout << some_str_3.Compare("as") << std::endl;
 
+	std::cout << "Testing Compare oprators == " << std::endl;
+	std::cout << (some_str == some_str_2) << std::endl;
+	std::cout << (some_str_3 == some_str_2) << std::endl;
+
+	std::cout << "Testing Compare oprators != " << std::endl;
+	std::cout << (some_str != some_str_2) << std::endl;
+	std::cout << (some_str_3 != some_str_2) << std::endl;
+
+	std::cout << "Testing Compare oprators < " << std::endl;
+	std::cout << (some_str < some_str_2) << std::endl;
+	std::cout << (some_str_3 < some_str_2) << std::endl;
+
+	std::cout << "Testing Compare oprators <= " << std::endl;
+	std::cout << (some_str <= some_str_2) << std::endl;
+	std::cout << (some_str_3 <= some_str_2) << std::endl;
+
+	std::cout << "Testing Compare oprators > " << std::endl;
+	std::cout << (some_str > some_str_2) << std::endl;
+	std::cout << (some_str_3 > some_str_2) << std::endl;
+
+	std::cout << "Testing Compare oprators >= " << std::endl;
+	std::cout << (some_str >= some_str_2) << std::endl;
+	std::cout << (some_str_3 >= some_str_2) << std::endl;
 
 	std::cout << "Testing CharAt" << std::endl;
 	std::cout << some_str_2.CharAt(0) << std::endl;

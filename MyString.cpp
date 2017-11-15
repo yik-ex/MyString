@@ -41,12 +41,12 @@ yik::String::~String()
 
 #pragma endregion
 
-size_t yik::String::GetLength()
+size_t yik::String::GetLength() const
 {
 	return str_size;
 }
 
-void yik::String::Assign(String & my_string)
+void yik::String::Assign(const String & my_string)
 {
 	Clear();
 
@@ -79,7 +79,7 @@ char yik::String::CharAt(const unsigned int index) const
 
 //append another string to this string
 // return true is manage to do it
-bool yik::String::Append(yik::String & my_string)
+bool yik::String::Append(const yik::String & my_string)
 {
 	//check if can be appended
 	if (my_string.GetLength() > SIZE_MAX - this->str_size)
@@ -152,7 +152,7 @@ bool yik::String::Append(const char * c_str)
 // +--------------+--------------------------------------------------------------------------------------------------+
 // |	 >0		  |	the first character that does not match has a greater value in this than in my_string			 |
 // +--------------+--------------------------------------------------------------------------------------------------+
-int yik::String::Compare(String & my_string) const
+int yik::String::Compare(const String & my_string) const
 {
 	return strcmp(this->c_str(), my_string.c_str());
 }
@@ -198,6 +198,40 @@ const char * yik::String::c_str() const
 {
 	{ return str_ptr; }
 }
+
+#pragma region Comparison operators
+
+bool yik::String::operator==(const String & my_str) const
+{
+	return (this->Compare(my_str) == 0);
+}
+
+bool yik::String::operator!=(const String & my_str) const
+{
+	return (this->Compare(my_str) != 0);
+}
+
+bool yik::String::operator>(const String & my_str) const
+{
+	return (this->Compare(my_str) > 0);
+}
+
+bool yik::String::operator>=(const String & my_str) const
+{
+	return (this->Compare(my_str) >= 0);
+}
+
+bool yik::String::operator<(const String & my_str) const
+{
+	return (this->Compare(my_str) < 0);
+}
+
+bool yik::String::operator<=(const String & my_str) const
+{
+	return (this->Compare(my_str) <= 0);
+}
+
+#pragma endregion
 
 //iostrem overloding of MyStream
 std::ostream & yik::operator<<(std::ostream & out, String & string)

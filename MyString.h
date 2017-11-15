@@ -19,17 +19,17 @@ namespace yik
 	
 		~String();
 
-		size_t GetLength();
+		size_t GetLength() const;
 
-		void Assign(String &);
+		void Assign(const String &);
 		void Assign(const char *);
 
 		char CharAt(const unsigned int) const;
 
-		bool Append(String &);
+		bool Append(const String &);
 		bool Append(const char *);
 
-		int Compare(String &) const;
+		int Compare(const String &) const;
 		int Compare(const char *) const;
 
 		bool IsEmpty() const;
@@ -38,7 +38,18 @@ namespace yik
 		const char * c_str() const;
 
 		friend std::ostream& operator<<(std::ostream&, String&);
-	
+		
+		#pragma region Operator
+
+		//compare operators
+		bool operator== (const String&) const;
+		bool operator!= (const String&) const;
+		bool operator>  (const String&) const;
+		bool operator>= (const String&) const;
+		bool operator<  (const String&) const;
+		bool operator<= (const String&) const;
+		#pragma endregion
+
 	};
 
 }
