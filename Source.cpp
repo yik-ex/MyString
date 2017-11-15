@@ -26,6 +26,14 @@ int main()
 	some_str_3.Assign(String("This a new c_string"));
 	std::cout << some_str_3 << std::endl;
 
+	std::cout << "Testing Assign operator with String" << std::endl;
+	some_str_3 = String("This a new String");
+	std::cout << some_str_3 << std::endl;
+
+
+	std::cout << "Testing Assign operator with String" << std::endl;
+	some_str_3 = "This a new String";
+	std::cout << some_str_3 << std::endl;
 
 	std::cout << "Testing Append with String" << std::endl;
 	some_str_3.Append(some_str_2);

@@ -39,7 +39,11 @@ namespace yik
 
 		friend std::ostream& operator<<(std::ostream&, String&);
 		
-		#pragma region Operator
+		#pragma region Operators
+		
+		//assignment operator
+		String& operator= (const String&);
+		String& operator= (const char *);
 
 		//compare operators
 		bool operator== (const String&) const;
@@ -48,6 +52,14 @@ namespace yik
 		bool operator>= (const String&) const;
 		bool operator<  (const String&) const;
 		bool operator<= (const String&) const;
+
+		bool operator== (const char *) const;
+		bool operator!= (const char *) const;
+		bool operator>  (const char *) const;
+		bool operator>= (const char *) const;
+		bool operator<  (const char *) const;
+		bool operator<= (const char *) const;
+		
 		#pragma endregion
 
 	};

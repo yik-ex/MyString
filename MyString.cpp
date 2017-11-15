@@ -41,6 +41,8 @@ yik::String::~String()
 
 #pragma endregion
 
+#pragma region Functions
+
 size_t yik::String::GetLength() const
 {
 	return str_size;
@@ -176,7 +178,7 @@ int yik::String::Compare(const char * c_string) const
 //Return is the string is empty
 bool yik::String::IsEmpty() const
 {
-	return str_size;
+	return (str_size == 0);
 }
 
 //Clear the string
@@ -199,43 +201,100 @@ const char * yik::String::c_str() const
 	{ return str_ptr; }
 }
 
-#pragma region Comparison operators
+#pragma endregion
 
+#pragma region Operators
+
+yik::String & yik::String::operator=(const String & my_str)
+{
+	Assign(my_str);
+	return *this;
+}
+
+yik::String & yik::String::operator=(const char * my_str)
+{
+	Assign(my_str);
+	return *this;
+}
+
+//compare two Strings
 bool yik::String::operator==(const String & my_str) const
 {
 	return (this->Compare(my_str) == 0);
 }
 
+//compare two Strings
 bool yik::String::operator!=(const String & my_str) const
 {
 	return (this->Compare(my_str) != 0);
 }
 
+//compare two Strings
 bool yik::String::operator>(const String & my_str) const
 {
 	return (this->Compare(my_str) > 0);
 }
 
+//compare two Strings
 bool yik::String::operator>=(const String & my_str) const
 {
 	return (this->Compare(my_str) >= 0);
 }
 
+//compare two Strings
 bool yik::String::operator<(const String & my_str) const
 {
 	return (this->Compare(my_str) < 0);
 }
 
+//compare two Strings
 bool yik::String::operator<=(const String & my_str) const
 {
 	return (this->Compare(my_str) <= 0);
 }
 
-#pragma endregion
+//compare two Strings
+bool yik::String::operator==(const char * my_str) const
+{
+	return (this->Compare(my_str) == 0);
+}
 
-//iostrem overloding of MyStream
+//compare two Strings
+bool yik::String::operator!=(const char * my_str) const
+{
+	return (this->Compare(my_str) != 0);
+}
+
+//compare two Strings
+bool yik::String::operator>(const char * my_str) const
+{
+	return (this->Compare(my_str) > 0);
+}
+
+//compare two Strings
+bool yik::String::operator>=(const char * my_str) const
+{
+	return (this->Compare(my_str) >= 0);
+}
+
+//compare two Strings
+bool yik::String::operator<(const char * my_str) const
+{
+	return (this->Compare(my_str) < 0);
+}
+
+//compare two Strings
+bool yik::String::operator<=(const char * my_str) const
+{
+	return (this->Compare(my_str) <= 0);
+}
+
+//iostrem overloding of MyString
 std::ostream & yik::operator<<(std::ostream & out, String & string)
 {
 	out << string.c_str();
 	return out;
 }
+
+#pragma endregion
+
