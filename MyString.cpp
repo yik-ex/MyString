@@ -4,18 +4,18 @@
 
 #pragma region CTOR/DTOR
 
-MyString::MyString() : str_ptr(nullptr), str_size(0)
+yik::String::String() : str_ptr(nullptr) , str_size(0)
 {
 	str_ptr = new char[1];
 	str_ptr[str_size] = 0x0;
 }
 
-MyString::MyString(MyString & my_string) : str_ptr(nullptr), str_size(0)
+yik::String::String(String & my_string) : str_ptr(nullptr), str_size(0)
 {
 	Assign(my_string);
 }
 
-MyString::MyString(const char * str) : str_ptr(nullptr), str_size(0)
+yik::String::String(const char * str) : str_ptr(nullptr), str_size(0)
 {
 	size_t str_len = std::strlen(str);
 	
@@ -33,7 +33,7 @@ MyString::MyString(const char * str) : str_ptr(nullptr), str_size(0)
 
 }
 
-MyString::~MyString()
+yik::String::~String()
 {
 	if (str_ptr)
 		delete [] str_ptr;
@@ -41,16 +41,16 @@ MyString::~MyString()
 
 #pragma endregion
 
-size_t MyString::GetLength()
+size_t yik::String::GetLength()
 {
 	return str_size;
 }
 
-void MyString::Assign(MyString & my_string)
+void yik::String::Assign(String & my_string)
 {
 	Clear();
 
-	//Don't need to check the other MyString, we use the assumption all the values are valid
+	//Don't need to check the other String, we use the assumption all the values are valid
 	this->str_size = my_string.GetLength();
 	this->str_ptr = new char[this->str_size + 1];
 	strncpy(this->str_ptr, my_string.c_str(), this->str_size);
@@ -58,7 +58,7 @@ void MyString::Assign(MyString & my_string)
 
 }
 
-void MyString::Assign(const char * c_str)
+void yik::String::Assign(const char * c_str)
 {
 	Clear();
 	str_size = strlen(c_str);
@@ -69,7 +69,7 @@ void MyString::Assign(const char * c_str)
 
 //get integer at the n-th position
 // throw an exeption if index is out of boundries
-char MyString::CharAt(const unsigned int index) const
+char yik::String::CharAt(const unsigned int index) const
 {
 	if (index >= str_size)
 		throw("Index out of boundries");
@@ -79,7 +79,7 @@ char MyString::CharAt(const unsigned int index) const
 
 //append another string to this string
 // return true is manage to do it
-bool MyString::Append(MyString & my_string)
+bool yik::String::Append(yik::String & my_string)
 {
 	//check if can be appended
 	if (my_string.GetLength() > SIZE_MAX - this->str_size)
@@ -109,7 +109,7 @@ bool MyString::Append(MyString & my_string)
 	return true;
 }
 
-bool MyString::Append(const char * c_str)
+bool yik::String::Append(const char * c_str)
 {
 	const size_t c_str_size = strlen(c_str);
 
@@ -152,7 +152,7 @@ bool MyString::Append(const char * c_str)
 // +--------------+--------------------------------------------------------------------------------------------------+
 // |	 >0		  |	the first character that does not match has a greater value in this than in my_string			 |
 // +--------------+--------------------------------------------------------------------------------------------------+
-int MyString::Compare(MyString & my_string) const
+int yik::String::Compare(String & my_string) const
 {
 	return strcmp(this->c_str(), my_string.c_str());
 }
@@ -168,19 +168,19 @@ int MyString::Compare(MyString & my_string) const
 // +--------------+--------------------------------------------------------------------------------------------------+
 // |	 >0		  |	the first character that does not match has a greater value in this than in c_string			 |
 // +--------------+--------------------------------------------------------------------------------------------------+
-int MyString::Compare(const char * c_string) const
+int yik::String::Compare(const char * c_string) const
 {
 	return strcmp(this->c_str(), c_string);
 }
 
 //Return is the string is empty
-bool MyString::IsEmpty() const
+bool yik::String::IsEmpty() const
 {
 	return str_size;
 }
 
 //Clear the string
-void MyString::Clear()
+void yik::String::Clear()
 {
 	if (!str_size)
 	{
@@ -194,13 +194,13 @@ void MyString::Clear()
 }
 
 //Return a Read Only reference to the string
-const char * MyString::c_str() const
+const char * yik::String::c_str() const
 {
 	{ return str_ptr; }
 }
 
 //iostrem overloding of MyStream
-std::ostream & operator<<(std::ostream & out, MyString & string)
+std::ostream & yik::operator<<(std::ostream & out, String & string)
 {
 	out << string.c_str();
 	return out;

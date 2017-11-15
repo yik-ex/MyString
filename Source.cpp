@@ -1,31 +1,33 @@
 #include "MyString.h"
 #include <iostream>
 
+using namespace yik;
+
 int main()
 {
-	MyString some_str;
+	String some_str;
 	std::cout << "Trying to print an empty string" << std::endl;
 	std::cout << some_str << std::endl;
 
-	MyString some_str_2("This is a test!");
+	String some_str_2("This is a test!");
 	std::cout << "Trying to print a Mystrig test created be a c-string string" << std::endl;
 	std::cout << some_str_2 << std::endl;
 
-	MyString some_str_3("This is a test!");
-	std::cout << "Trying to print a Mystrig test created by a copy of a MyString" << std::endl;
+	String some_str_3("This is a test!");
+	std::cout << "Trying to print a Mystrig test created by a copy of a String" << std::endl;
 	std::cout << some_str_3 << std::endl;
 
 
-	std::cout << "Testing Assign with MyString" << std::endl;
-	some_str_3.Assign(MyString("This a new MyString"));
+	std::cout << "Testing Assign with String" << std::endl;
+	some_str_3.Assign(String("This a new String"));
 	std::cout << some_str_3 << std::endl;
 
 	std::cout << "Testing Assign with c_string" << std::endl;
-	some_str_3.Assign(MyString("This a new c_string"));
+	some_str_3.Assign(String("This a new c_string"));
 	std::cout << some_str_3 << std::endl;
 
 
-	std::cout << "Testing Append with MyString" << std::endl;
+	std::cout << "Testing Append with String" << std::endl;
 	some_str_3.Append(some_str_2);
 	std::cout << some_str_3 << std::endl;
 
@@ -42,7 +44,7 @@ int main()
 	std::cout << some_str.GetLength() << std::endl;
 	std::cout << some_str_3.GetLength() << std::endl;
 
-	std::cout << "Testing Compare MyString" << std::endl;
+	std::cout << "Testing Compare String" << std::endl;
 	std::cout << some_str.Compare(some_str_2) << std::endl;
 	std::cout << some_str_3.Compare(some_str_2) << std::endl;
 

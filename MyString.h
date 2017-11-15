@@ -1,40 +1,44 @@
 #pragma once
 #include <iostream>
 
-class MyString
+namespace yik
 {
-private:
+
+	class String
+	{
+	private:
 	
-	char * str_ptr;
-	size_t str_size;
+		char * str_ptr;
+		size_t str_size;
 
-public:
+	public:
 
-	MyString();
-	MyString(MyString &);
-	MyString(const char *);
+		String();
+		String(String &);
+		String(const char *);
 	
-	~MyString();
+		~String();
 
-	size_t GetLength();
+		size_t GetLength();
 
-	void Assign(MyString &);
-	void Assign(const char *);
+		void Assign(String &);
+		void Assign(const char *);
 
-	char CharAt(const unsigned int) const;
+		char CharAt(const unsigned int) const;
 
-	bool Append(MyString &);
-	bool Append(const char *);
+		bool Append(String &);
+		bool Append(const char *);
 
-	int Compare(MyString &) const;
-	int Compare(const char *) const;
+		int Compare(String &) const;
+		int Compare(const char *) const;
 
-	bool IsEmpty() const;
-	void Clear();
+		bool IsEmpty() const;
+		void Clear();
 
-	const char * c_str() const;
+		const char * c_str() const;
 
-	friend std::ostream& operator<<(std::ostream&, MyString&);
+		friend std::ostream& operator<<(std::ostream&, String&);
 	
-};
+	};
 
+}
